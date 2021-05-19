@@ -19,11 +19,11 @@ spring:
 #          search-paths:
 #            - spring-config
 #      label: main
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: guest
-#    password: guest
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
 
 
 eureka:
@@ -33,8 +33,8 @@ eureka:
 
 # 暴露bus刷新配置的端点
 
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "bus-refresh"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

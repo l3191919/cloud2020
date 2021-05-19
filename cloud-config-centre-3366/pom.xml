@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-config-centre-3344</artifactId>
-
+    <artifactId>cloud-config-centre-3366</artifactId>
     <dependencies>
         <!-- rabbitMQ消息总线支持       -->
         <dependency>
@@ -19,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -45,4 +44,5 @@
         </dependency>
 
     </dependencies>
+
 </project>
