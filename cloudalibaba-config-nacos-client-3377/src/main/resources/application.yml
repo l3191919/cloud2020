@@ -1,0 +1,4 @@
+spring:
+  profiles:
+    active: dev  #nacos的Data Id后缀
+    #active: test

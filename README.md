@@ -49,3 +49,12 @@ Controller层的 @RestController 就是@Controller+@ResponseBody
 
 @PostMapping(path = "/members", consumes = "application/json", produces = "application/json")
 
+
+
+nocos支持负载均衡，是因为内置了ribbon，而ribboin只是个客户端负载均衡工具，服务调用这里用的是restTemplate，restTemplate只管调用，本身不具备负载均衡功能，要用@LoadBalanced注解赋予restTemplate负载均衡的功能
+
+
+nacos和eureka代码上在集成ribbon，feign是一样的，没有任何区别，只是配置从eureka换成了nacos discovery
+
+CAP
+C：强一致性；A：高可用性；P：分区容错性
