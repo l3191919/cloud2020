@@ -1,7 +1,9 @@
 package com.atguigu.springcloud.alibaba.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
+import com.atguigu.springcloud.entities.Person;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -89,6 +91,12 @@ public class PaymentController {
 
         return serverPost;
     }
+
+    @PostMapping(value = "payment/getPerson")
+    public  void  getPerson(@RequestBody Person person){
+        log.info("getPerson:{}",JSON.toJSONString(person));
+    }
+
 }
 
 
