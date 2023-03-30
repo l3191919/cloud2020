@@ -1,5 +1,9 @@
 #Java Spring cloud 分布式
 ####payment 8001 8002 8003
+
+#### 配置 3344 3355 3366
+#### nacos 3377
+
 使用的技术有 
 MySql
 eureka
@@ -58,3 +62,6 @@ nacos和eureka代码上在集成ribbon，feign是一样的，没有任何区别�
 
 CAP
 C：强一致性；A：高可用性；P：分区容错性
+
+rabbitmq
+com/atguigu/springcloud/rabbitmq/Customer1

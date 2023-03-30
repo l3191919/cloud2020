@@ -6,12 +6,18 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.entities.Person;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -95,6 +101,35 @@ public class PaymentController {
     @PostMapping(value = "payment/getPerson")
     public  void  getPerson(@RequestBody Person person){
         log.info("getPerson:{}",JSON.toJSONString(person));
+    }
+
+    public void getMethod(){
+
+        for(Field field:paymentService.getClass().getFields()){
+            if(field.isAnnotationPresent(Autowired.class)){
+
+                if(field.getName().equals("PaymentDao")){
+
+                }
+
+            }
+        }
+
+        //获得所有方法，并且判断有@PostConstruct注释的方法
+        for(Method method:paymentService.getClass().getDeclaredMethods()){
+            if(method.isAnnotationPresent(PostConstruct.class)){
+                if(method.getName().equals("getMethod")){}
+                try {
+                    method.invoke(paymentService,null);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
     }
 
 }
