@@ -1,4 +1,4 @@
-package com.atguigu.springcloud.alibaba.controller;
+package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
@@ -14,8 +14,11 @@ public class PaymentController1 {
 
     @GetMapping(value = "payment1/get/{id}")
     public  Payment getPaymentById(@PathVariable("id") Long id){
+        return    paymentService.getPaymentById(id);
+    }
 
-     return    paymentService.getPaymentById(id);
-
+    @GetMapping(value = "payment1/pushMessage")
+    public  void sendMessage(){
+       paymentService.sendMessage();
     }
 }

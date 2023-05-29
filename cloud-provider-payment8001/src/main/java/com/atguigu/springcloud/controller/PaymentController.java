@@ -1,12 +1,12 @@
-package com.atguigu.springcloud.alibaba.controller;
+package com.atguigu.springcloud.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.entities.Person;
 import com.atguigu.springcloud.service.PaymentService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -18,6 +18,7 @@ import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -66,6 +67,25 @@ public class PaymentController {
             return new CommonResult(200, "查询成功,serverPort:" + serverPost,payment);
         }
         return new CommonResult(444, "没有对应记录,查询ID:" + id, null);
+    }
+    @GetMapping(value = "payment/byCompany/{companyId}")
+    public CommonResult getPaymentByCompanyId(@PathVariable("companyId") Long companyId) {
+        IPage<Payment> payment = paymentService.getPaymentByCompanyId(companyId);
+        log.info("*****查询结果: " + payment);
+        if (payment != null) {
+            return new CommonResult(200, "查询成功,serverPort:" + serverPost,payment);
+        }
+        return new CommonResult(444, "没有对应记录,查询ID:" + companyId, null);
+    }
+
+    @PostMapping(value = "payment/getPaymentByOr")
+    public CommonResult getPaymentByOr(@RequestBody HashMap<String,String> map) {
+        IPage<Payment> payment = paymentService.getPaymentByOr(map);
+        log.info("*****查询结果: " + payment);
+        if (payment != null) {
+            return new CommonResult(200, "查询成功,serverPort:" + serverPost,payment);
+        }
+        return new CommonResult(444, "没有对应记录,查询ID:" + JSON.toJSONString(map), null);
     }
 
     @GetMapping("patment/discovery")

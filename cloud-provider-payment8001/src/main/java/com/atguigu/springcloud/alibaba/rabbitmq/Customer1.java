@@ -1,4 +1,4 @@
-package com.atguigu.springcloud.rabbitmq;
+package com.atguigu.springcloud.alibaba.rabbitmq;
 
 import com.rabbitmq.client.*;
 

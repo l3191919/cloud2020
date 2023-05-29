@@ -1,4 +1,4 @@
-package com.atguigu.springcloud.alibaba.controller;
+package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;

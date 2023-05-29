@@ -8,6 +8,6 @@ public class Person {
 
     private String lastName;
 
-    private int age;
+    private Integer age;
 }
 

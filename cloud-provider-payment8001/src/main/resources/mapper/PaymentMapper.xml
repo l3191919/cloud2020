@@ -9,9 +9,21 @@
     <resultMap id="BaseResultMap" type="com.atguigu.springcloud.entities.Payment">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <id column="serial" property="serial" jdbcType="VARCHAR"/>
+        <id column="company_id" property="companyId" jdbcType="BIGINT"/>
     </resultMap>
 
     <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
         select * from payment where id = #{id};
     </select>
+
+    <select id="getPaymentByCompanyId" parameterType="Long" resultMap="BaseResultMap">
+        select * from payment where company_id = #{companyId}
+    </select>
+
+    <select id="getPaymentByOr" parameterType="java.util.Map"  resultMap="BaseResultMap">
+        select * from payment where company_id = #{map.companyId1}
+         union
+        select * from payment where company_id = #{map.companyId2}
+    </select>
+
 </mapper>
